@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1></h1>
 
-<h4>OrderDetails</h4>
+<h4>Place Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -48,6 +48,7 @@
                 <span asp-validation-for="pincode" class="text-danger"></span>
             </div>
             <div class="input-group mb-3 w-50">
+                <label asp-for="Qyt" class="control-label">Qty</label>
                 <button class="btn btn-primary" type="button" id="minus">-</button>
                 <input type="text" asp-for="Qyt" id="quantity" class="form-control text-center" value="1">
                 <button class="btn btn-primary" type="button" id="plus">+</button>
