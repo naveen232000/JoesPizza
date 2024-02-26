@@ -1,0 +1,122 @@
+﻿@model JoesPizza.Models.OrderDetails
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>OrderDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          @*   <div class="form-group">
+                <label asp-for="ItemId" class="control-label"></label>
+                <input id="odritmid" asp-for="ItemId" class="form-control" />
+                <span asp-validation-for="ItemId" class="text-danger"></span>
+            </div> *@
+           @*  <div class="form-group">
+                <label asp-for="Qyt" class="control-label"></label>
+                <input asp-for="Qyt" class="form-control" />
+                <span asp-validation-for="Qyt" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerEmail" class="control-label"></label>
+                <input type="email" asp-for="CustomerEmail" class="form-control" />
+                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MobileNum" class="control-label"></label>
+                <input asp-for="MobileNum" class="form-control" />
+                <span asp-validation-for="MobileNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryAddress" class="control-label"></label>
+                <input asp-for="DeliveryAddress" class="form-control" />
+                <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pincode" class="control-label"></label>
+                <input asp-for="pincode" class="form-control" />
+                <span asp-validation-for="pincode" class="text-danger"></span>
+            </div>
+            <div class="input-group mb-3 w-50">
+                <button class="btn btn-primary" type="button" id="minus">-</button>
+                <input type="text" asp-for="Qyt" id="quantity" class="form-control text-center" value="1">
+                <button class="btn btn-primary" type="button" id="plus">+</button>
+            </div>
+           @*  <div class="form-group">
+                <label asp-for="TotalAmt" class="control-label"></label>
+                <input asp-for="TotalAmt" class="form-control" />
+                <span asp-validation-for="TotalAmt" class="text-danger"></span>
+            </div> *@
+          @*   <div class="form-group">
+                <label asp-for="PaymentStatus" class="control-label"></label>
+                <input asp-for="PaymentStatus" class="form-control" />
+                <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+            </div> *@
+         @*    <div class="form-group">
+                <label asp-for="PaymentType" class="control-label"></label>
+                <input asp-for="PaymentType" class="form-control" />
+                <span asp-validation-for="PaymentType" class="text-danger"></span>
+            </div> *@
+            <div class="form-check mb-2 form-group">
+                <label asp-for="PaymentType" class="control-label">Payment Type</label>
+                <select class="form-select" aria-label="Disabled select example" asp-for="PaymentType" >
+                  
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                 
+                </select>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="OdredDate" class="control-label"></label>
+                <input asp-for="OdredDate" class="form-control" />
+                <span asp-validation-for="OdredDate" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Place Order" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+     
+        var quantityInput = document.getElementById('quantity');
+        var priceElement = document.getElementById('price');
+
+        document.getElementById('minus').addEventListener('click', function () {
+            updateQuantity(-1);
+        });
+
+        document.getElementById('plus').addEventListener('click', function () {
+            updateQuantity(1);
+        });
+
+        function updateQuantity(change) {
+            var currentQuantity = parseInt(quantityInput.value);
+            var newQuantity = currentQuantity + change;
+
+            if (newQuantity < 1) {
+                newQuantity = 1;
+            }
+
+            quantityInput.value = newQuantity;
+            
+        }
+    </script>
+}
